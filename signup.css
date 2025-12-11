@@ -1,0 +1,209 @@
+/* General styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #002d3a, #000000);
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  width: 850px;
+  max-width: 100%;
+  height: 550px;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Left side */
+.left {
+  flex: 1;
+  background: url("imgs/log2.png") center/cover no-repeat;
+  color: #fff;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  object-fit: cover;
+  height: 550px;
+
+}
+
+.left h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.left p {
+  font-size: 18px;
+  opacity: 0.9;
+  color: #000000;
+  font-weight: bold;
+}
+
+/* Right side */
+.right {
+  flex: 1;
+  background: #fff;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #000;
+}
+
+/* New styles for password container and icon */
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; /* Make space for the icon */
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+}
+
+.password-toggle-icon:hover {
+  color: #000;
+}
+
+.checkbox {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.google {
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #000;
+}
+
+.apple {
+  background: #000;
+  color: #fff;
+}
+
+.divider {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 14px;
+  color: #888;
+}
+
+form a {
+  text-decoration: none;
+  color: #888;
+}
+
+/* ---------------------------
+  Responsive Design
+---------------------------- */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left {
+    height: 250px;
+    padding: 30px;
+    text-align: center;
+    justify-content: flex-end;
+  }
+
+  .left h1 {
+    font-size: 28px;
+  }
+
+  .left p {
+    font-size: 16px;
+  }
+
+  .right {
+    padding: 30px 20px;
+  }
+
+  .right h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  input, .btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .left h1 {
+    font-size: 22px;
+  }
+
+  .left p {
+    font-size: 14px;
+  }
+
+  .right h2 {
+    font-size: 20px;
+  }
+}

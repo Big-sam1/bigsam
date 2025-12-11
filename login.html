@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="login.css">
+  <link rel="shortcut icon" href="imgs/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <title>Login Form</title>
+  
+  <script type="module" src="login.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h1>Create your<br>Account</h1>
+      <p>Get in<br>and join us!</p>
+    </div>
+
+    <div class="right">
+      <h2>Login</h2>
+      <form id="LoginForm">
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <div class="password-container">
+          <input type="password" name="password" id="password" placeholder="Enter your Password" required>
+          <span class="password-toggle-icon" id="passwordToggle">
+            <i class="fa-solid fa-eye-slash"></i>
+          </span>
+        </div>
+        
+        <label class="checkbox">
+          <input type="checkbox" required>
+          Accept Terms & Conditions
+        </label>
+
+        <div class="divider">or</div>
+
+        <button type="submit" id="submit" class="btn apple">Login</button>
+        If you have no account?<a href="index.html">Sign Up</a>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
