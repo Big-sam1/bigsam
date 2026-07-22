@@ -1,6 +1,6 @@
-// Dynamically load all PNG images from the Images folder in Vite
+// Dynamically load image files from the Images folder in Vite
 const images = import.meta.glob<{ default: string }>(
-  '../Images/*.png',
+  '../Images/*.{png,jpg,jpeg,webp}',
   { eager: true }
 );
 

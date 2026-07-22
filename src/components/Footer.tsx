@@ -6,52 +6,75 @@ import {
   TwitterIcon,
   MailIcon,
   MapPinIcon,
-  PhoneIcon } from
-'lucide-react';
+  PhoneIcon
+} from
+  'lucide-react';
 import { Logo } from './Logo';
 const quickLinks = [
-{
-  name: 'Home',
-  to: '/'
-},
-{
-  name: 'About',
-  to: '/about'
-},
-{
-  name: 'Services',
-  to: '/services'
-},
-{
-  name: 'Projects',
-  to: '/projects'
-},
-{
-  name: 'Contact',
-  to: '/contact'
-}];
+  {
+    name: 'Home',
+    to: '/'
+  },
+  {
+    name: 'About',
+    to: '/about'
+  },
+  {
+    name: 'Services',
+    to: '/services'
+  },
+  {
+    name: 'Projects',
+    to: '/projects'
+  },
+  {
+    name: 'Contact',
+    to: '/contact'
+  }];
 
 const services = [
-'Web Development',
-'UI/UX Design',
-'Graphic design',
-'Consulting'];
+  'Web Development',
+  'UI/UX Design',
+  'Graphic design',
+  'Consulting'];
+
+const socialLinks = [
+  {
+    Icon: GithubIcon,
+    href: 'https://github.com/Big-sam1',
+    label: 'GitHub'
+  },
+  {
+    Icon: LinkedinIcon,
+    href: 'https://www.linkedin.com/in/mugisha-samuel-07288a344/',
+    label: 'LinkedIn'
+  },
+  {
+    Icon: TwitterIcon,
+    href: 'https://x.com/Bigsam934310',
+    label: 'Twitter'
+  },
+  {
+    Icon: MailIcon,
+    href: 'mailto:bigsamdmd@gmail.com',
+    label: 'Email'
+  }];
 
 const contactInfo = [
-{
-  Icon: MailIcon,
-  label: 'bigsamdmd@gmail.com',
-  href: 'mailto:hello@bigsam.dev'
-},
-{
-  Icon: PhoneIcon,
-  label: 'tel:+250 796 395 652',
-  href: 'tel:+441234567890'
-},
-{
-  Icon: MapPinIcon,
-  label: 'KIGALI-Rwanda'
-}];
+  {
+    Icon: MailIcon,
+    label: 'bigsamdmd@gmail.com',
+    href: 'mailto:bigsamdmd@gmail.com'
+  },
+  {
+    Icon: PhoneIcon,
+    label: 'tel:+250 796 395 652',
+    href: 'tel:+441234567890'
+  },
+  {
+    Icon: MapPinIcon,
+    label: 'KIGALI-Rwanda'
+  }];
 
 export function Footer() {
   return (
@@ -68,15 +91,15 @@ export function Footer() {
               thoughtful design.
             </p>
             <div className="mt-6 flex items-center gap-3">
-              {[GithubIcon, LinkedinIcon, TwitterIcon, MailIcon].map(
-                (Icon, i) =>
+              {socialLinks.map(({ Icon, href, label }) =>
                 <a
-                  key={i}
-                  href="#"
+                  key={label}
+                  href={href}
+                  aria-label={label}
                   className="w-9 h-9 rounded-full border border-ink-200 dark:border-ink-800 flex items-center justify-center text-ink-600 dark:text-ink-400 hover:bg-gold hover:text-white hover:border-transparent transition-all">
-                  
-                    <Icon className="w-4 h-4" />
-                  </a>
+
+                  <Icon className="w-4 h-4" />
+                </a>
 
               )}
             </div>
@@ -88,11 +111,11 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5">
               {quickLinks.map((link) =>
-              <li key={link.to}>
+                <li key={link.to}>
                   <Link
-                  to={link.to}
-                  className="text-sm text-ink-500 dark:text-ink-400 hover:text-gold transition-colors">
-                  
+                    to={link.to}
+                    className="text-sm text-ink-500 dark:text-ink-400 hover:text-gold transition-colors">
+
                     {link.name}
                   </Link>
                 </li>
@@ -106,21 +129,21 @@ export function Footer() {
             </h4>
             <ul className="space-y-3">
               {contactInfo.map(({ Icon, label, href }) =>
-              <li
-                key={label}
-                className="flex items-center gap-3 text-sm text-ink-500 dark:text-ink-400">
-                
+                <li
+                  key={label}
+                  className="flex items-center gap-3 text-sm text-ink-500 dark:text-ink-400">
+
                   <Icon className="w-4 h-4 text-gold flex-shrink-0" />
                   {href ?
-                <a
-                  href={href}
-                  className="hover:text-ink-900 dark:hover:text-white transition-colors break-all">
-                  
+                    <a
+                      href={href}
+                      className="hover:text-ink-900 dark:hover:text-white transition-colors break-all">
+
                       {label}
                     </a> :
 
-                <span>{label}</span>
-                }
+                    <span>{label}</span>
+                  }
                 </li>
               )}
             </ul>

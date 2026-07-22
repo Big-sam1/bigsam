@@ -12,7 +12,7 @@ import {
 const facts = [
 {
   Icon: BriefcaseIcon,
-  label: '5+ Years Experience',
+  label: '1+ Years Experience',
   sub: 'in Web Development'
 },
 {
@@ -41,7 +41,7 @@ const stats = [
   label: 'Happy Clients'
 },
 {
-  value: '5+',
+  value: '1+',
   label: 'Years Experience'
 },
 {
