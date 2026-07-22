@@ -29,22 +29,22 @@ const fadeUp = {
 const socials = [
 {
   Icon: GithubIcon,
-  href: '#',
+  href: 'https://github.com/Big-sam1',
   label: 'GitHub'
 },
 {
   Icon: LinkedinIcon,
-  href: '#',
+  href: 'https://www.linkedin.com/in/mugisha-samuel-07288a344/',
   label: 'LinkedIn'
 },
 {
   Icon: TwitterIcon,
-  href: '#',
+  href: 'https://x.com/Bigsam934310',
   label: 'Twitter'
 },
 {
   Icon: MailIcon,
-  href: '#',
+  href: 'mailto:bigsamdmd@gmail.com',
   label: 'Email'
 }];
 
