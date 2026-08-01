@@ -60,7 +60,9 @@ export function ContactSection() {
     subject: '',
     message: ''
   });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [resultMsg, setResultMsg] = useState('');
+
   const handle = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({
@@ -68,20 +70,54 @@ export function ContactSection() {
       [e.target.name]: e.target.value
     });
   };
-  const submit = (e: React.FormEvent) => {
+
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('sending');
-    setTimeout(() => {
-      setStatus('sent');
-      setForm({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+    setResultMsg('Sending....');
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '4c0a1ce2-3c22-42b0-8e1a-b5de51cb45be';
+      formData.append('access_key', accessKey);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
       });
-      setTimeout(() => setStatus('idle'), 2800);
-    }, 1200);
+
+      const data = await response.json();
+      if (data.success) {
+        setStatus('sent');
+        setResultMsg('Form Submitted Successfully');
+        setForm({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+        setTimeout(() => {
+          setStatus('idle');
+          setResultMsg('');
+        }, 3500);
+      } else {
+        setStatus('error');
+        setResultMsg(data.message || 'Error submitting form');
+        setTimeout(() => {
+          setStatus('idle');
+          setResultMsg('');
+        }, 3500);
+      }
+    } catch (err) {
+      setStatus('error');
+      setResultMsg('Error submitting form');
+      setTimeout(() => {
+        setStatus('idle');
+        setResultMsg('');
+      }, 3500);
+    }
   };
+
   return (
     <section className="py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -89,7 +125,6 @@ export function ContactSection() {
           eyebrow="Contact"
           title="Get In Touch"
           description="Let's discuss your project or just say hello. I'd love to hear from you." />
-
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
           <motion.div
@@ -204,47 +239,58 @@ export function ContactSection() {
               onChange={handle}
               required />
 
+            <div className="flex flex-col items-start gap-2">
+              <motion.button
+                type="submit"
+                disabled={status === 'sending'}
+                whileHover={{
+                  scale: status === 'idle' ? 1.02 : 1
+                }}
+                whileTap={{
+                  scale: status === 'idle' ? 0.98 : 1
+                }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-ink-900 dark:bg-white text-white dark:text-ink-900 text-sm font-medium hover:bg-ink-800 dark:hover:bg-ink-100 transition-colors disabled:opacity-70">
 
-            <motion.button
-              type="submit"
-              disabled={status !== 'idle'}
-              whileHover={{
-                scale: status === 'idle' ? 1.02 : 1
-              }}
-              whileTap={{
-                scale: status === 'idle' ? 0.98 : 1
-              }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-ink-900 dark:bg-white text-white dark:text-ink-900 text-sm font-medium hover:bg-ink-800 dark:hover:bg-ink-100 transition-colors disabled:opacity-70">
+                {status === 'idle' &&
+                  <>
+                    Send Message
+                    <SendIcon className="w-4 h-4" />
+                  </>
+                }
+                {status === 'sending' &&
+                  <>
+                    Sending...
+                    <motion.span
+                      animate={{
+                        rotate: 360
+                      }}
+                      transition={{
+                        duration: 1,
+                        repeat: Infinity,
+                        ease: 'linear'
+                      }}
+                      className="w-4 h-4 border-2 border-current border-t-transparent rounded-full" />
 
-              {status === 'idle' &&
-                <>
-                  Send Message
-                  <SendIcon className="w-4 h-4" />
-                </>
-              }
-              {status === 'sending' &&
-                <>
-                  Sending...
-                  <motion.span
-                    animate={{
-                      rotate: 360
-                    }}
-                    transition={{
-                      duration: 1,
-                      repeat: Infinity,
-                      ease: 'linear'
-                    }}
-                    className="w-4 h-4 border-2 border-current border-t-transparent rounded-full" />
-
-                </>
-              }
-              {status === 'sent' &&
-                <>
-                  Message Sent
-                  <CheckIcon className="w-4 h-4" />
-                </>
-              }
-            </motion.button>
+                  </>
+                }
+                {status === 'sent' &&
+                  <>
+                    Message Sent
+                    <CheckIcon className="w-4 h-4" />
+                  </>
+                }
+                {status === 'error' &&
+                  <>
+                    Failed
+                  </>
+                }
+              </motion.button>
+              {resultMsg && (
+                <span className={`text-sm font-medium mt-1 ${status === 'error' ? 'text-red-500' : 'text-emerald-500 dark:text-emerald-400'}`}>
+                  {resultMsg}
+                </span>
+              )}
+            </div>
           </motion.form>
         </div>
       </div>

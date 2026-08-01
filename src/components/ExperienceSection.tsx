@@ -10,30 +10,32 @@ interface Entry {
   description: string;
 }
 const entries: Entry[] = [
-{
-  period: '2022 - Present',
+  {
+  period: '2026 - Present',
   initial: 'B',
-  role: 'Senior Frontend Developer',
-  company: 'TechNova Solutions',
+  role: 'Graphic Designer',
+  company: 'RAHURA & NeoScratch Brands',
   description:
-  'Leading frontend development for SaaS products with React, Next.js and TypeScript. Building scalable and performant web applications.'
+  'Worked on multiple client projects using HTML, CSS, JavaScript and WordPress. Gained strong foundation in web development.'
 },
 {
-  period: '2020 - 2022',
-  initial: 'C',
-  role: 'Frontend Developer',
-  company: 'Creative Studio',
+  period: '2025 - 2026',
+  initial: 'M',
+  role: 'Full Stack Developer',
+  company: 'Dream Maker Developers Company',
   description:
   'Developed responsive websites and web apps, collaborated with designers and backend developers to deliver high-quality products.'
 },
 {
-  period: '2019 - 2020',
-  initial: 'W',
-  role: 'Junior Developer',
-  company: 'WebCraft Agency',
+  period: '2023 - 2025',
+  initial: 'C',
+  role: 'Frontend Developer',
+  company: 'NEXOD Team',
   description:
-  'Worked on multiple client projects using HTML, CSS, JavaScript and WordPress. Gained strong foundation in web development.'
+  '  Leading frontend development for SaaS products with React, Next.js and TypeScript. Building scalable and performant web applications.'
 }];
+
+const cvUrl = new URL('../../images/Bigsam CV.pdf', import.meta.url).href;
 
 export function ExperienceSection() {
   return (
@@ -118,7 +120,8 @@ export function ExperienceSection() {
 
         <div className="mt-12">
           <a
-            href="#"
+            href={cvUrl}
+            download="Bigsam CV.pdf"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink-900 dark:bg-white text-white dark:text-ink-900 text-sm font-medium hover:bg-ink-800 dark:hover:bg-ink-100 transition-colors">
             
             Download CV

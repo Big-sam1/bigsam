@@ -7,8 +7,11 @@ import {
   MapPinIcon,
   GraduationCapIcon,
   CheckCircleIcon,
-  ArrowUpRightIcon } from
+  ArrowUpRightIcon,
+  DownloadIcon } from
 'lucide-react';
+
+const cvUrl = new URL('../../images/Bigsam CV.pdf', import.meta.url).href;
 const facts = [
 {
   Icon: BriefcaseIcon,
@@ -33,7 +36,7 @@ const facts = [
 
 const stats = [
 {
-  value: '50+',
+  value: '15+',
   label: 'Projects Completed'
 },
 {
@@ -120,13 +123,23 @@ export function AboutSection() {
               )}
             </div>
 
-            <Link
-              to="/about"
-              className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink-900 dark:bg-white text-white dark:text-ink-900 text-sm font-medium hover:bg-ink-800 dark:hover:bg-ink-100 transition-colors group">
-              
-              More About Me
-              <ArrowUpRightIcon className="w-4 h-4 group-hover:rotate-45 transition-transform" />
-            </Link>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink-900 dark:bg-white text-white dark:text-ink-900 text-sm font-medium hover:bg-ink-800 dark:hover:bg-ink-100 transition-colors group">
+                
+                More About Me
+                <ArrowUpRightIcon className="w-4 h-4 group-hover:rotate-45 transition-transform" />
+              </Link>
+              <a
+                href={cvUrl}
+                download="Bigsam CV.pdf"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-ink-300 dark:border-ink-700 text-ink-900 dark:text-white text-sm font-medium hover:bg-ink-100 dark:hover:bg-ink-900 transition-colors">
+                
+                Download CV
+                <DownloadIcon className="w-4 h-4" />
+              </a>
+            </div>
           </motion.div>
 
           <motion.div
