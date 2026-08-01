@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { loadImage } from '../utils/imageLoader';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { QuoteIcon, StarIcon } from 'lucide-react';
 
@@ -18,8 +19,7 @@ const testimonials: Testimonial[] = [
       'Bigsam is an outstanding developer. He delivered our project on time and exceeded our expectations with his attention to detail and creativity.',
     name: 'IZABAYO Olivier',
     role: 'Cybersecurity Specialist',
-    image:
-      'src/images/cl2.png',
+    image: loadImage('cl2.png'),
     rating: 5
   },
   {
@@ -28,8 +28,7 @@ const testimonials: Testimonial[] = [
       'Working with Bigsam was a fantastic experience. He understood our needs perfectly and built a beautiful, fast and user-friendly website.',
     name: 'Theo dev',
     role: 'Founder, Rwanda Scratch',
-    image:
-      'src/images/cl1.jpg',
+    image: loadImage('cl1.jpg'),
     rating: 5
   },
   {
@@ -38,8 +37,7 @@ const testimonials: Testimonial[] = [
       'Highly professional, communicative and skilled. Bigsam turned ideas into reality and delivered a product that we are proud of.',
     name: 'Anicet Chiza',
     role: 'Web développer',
-    image:
-      'src/images/cl3.jpg',
+    image: loadImage('cl3.jpg'),
     rating: 5
   },
   {
@@ -48,8 +46,7 @@ const testimonials: Testimonial[] = [
       'Pixel-perfect execution and clean code. Bigsam helped transform our outdated platform into a modern delight.',
     name: 'Teta Keza',
     role: 'Product Manager, Genz Inspire Hub',
-    image:
-      'src/images/cl4.jpg',
+    image: loadImage('cl4.jpg'),
     rating: 5
   },
   {
@@ -58,8 +55,7 @@ const testimonials: Testimonial[] = [
       'A rare hybrid of designer and engineer. The level of polish and care in every detail elevated our entire brand.',
     name: 'Olivia Martinez',
     role: 'Client',
-    image:
-      'src/images/cl5.jpg',
+    image: loadImage('cl5.jpg'),
     rating: 5
   }
 ];

@@ -195,7 +195,7 @@ export function HeroSection() {
 
               {/* Image */}
               <img
-                src={loadImage('im1.png')}
+                src={loadImage('me.png')}
                 alt="Bigsam portrait"
                 className="absolute inset-0 w-full h-full object-cover rounded-full" />
 

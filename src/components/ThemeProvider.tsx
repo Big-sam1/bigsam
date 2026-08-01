@@ -6,19 +6,23 @@ interface ThemeContextValue {
 }
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 export function ThemeProvider({ children }: {children: React.ReactNode;}) {
-  const [theme, setTheme] = useState<Theme>('light');
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem('bigsam-theme') as Theme | null;
-      if (stored === 'light' || stored === 'dark') {
-        setTheme(stored);
-      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTheme('dark');
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const stored = localStorage.getItem('bigsam-theme') as Theme | null;
+        if (stored === 'light' || stored === 'dark') {
+          return stored;
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+      } catch {
+        // ignore
       }
-    } catch {
+    }
+    return 'dark';
+  });
 
-      // ignore
-    }}, []);
   useEffect(() => {
     const root = document.documentElement;
     if (theme === 'dark') {
